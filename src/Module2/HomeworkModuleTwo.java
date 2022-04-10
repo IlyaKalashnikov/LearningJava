@@ -62,5 +62,99 @@ public class HomeworkModuleTwo {
         for (int b = 0; b < square.length; b++) {
             System.out.println(Arrays.toString(square[b]));
         }
+
+        /**Задать одномерный массив и найти в нем минимальный
+         *  и максимальный элементы;*/
+        int[] arrayMaxAndMin = {5, 2, 7, 9, 12, 34, 7, 4, -2, 11, 7, 3, -99, 12, 14, 5, 1, 0};
+        int min = arrayMaxAndMin[0];
+        int max = arrayMaxAndMin[0];
+        for (int x = 0; x < arrayMaxAndMin.length; x++) {
+            if (arrayMaxAndMin[x] < min) {
+                min = arrayMaxAndMin[x];
+            } else if (arrayMaxAndMin[x] > max) {
+                max = arrayMaxAndMin[x];
+            }
+        }
+        System.out.println("Minimal value: " + min);
+        System.out.println("Maximum value: " + max);
+        System.out.println(balanceCheck());
+
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        swapIndex(arr, 2);
+    }
+
+    /**
+     * Написать метод, в который передается не пустой одномерный целочисленный массив,
+     * метод должен вернуть true, если в массиве есть место,
+     * в котором сумма левой и правой части массива равны.
+     */
+    static boolean balanceCheck() {
+        int[] checkBalance = {-7, 5, 10, 4, 10, 1, 1};
+        int newValue = 0;
+        boolean checkComplete = false;
+        for (int x = 0; x < checkBalance.length; x++) {
+            int value = checkBalance[x];
+            int secondNewValue = 0;
+            newValue = newValue + value;
+            for (int y = x + 1; y < checkBalance.length; y++) {
+                int secondValue = checkBalance[y];
+                secondNewValue = secondNewValue + secondValue;
+                if (newValue == secondNewValue) {
+                    checkComplete = true;
+                }
+            }
+        }
+        return checkComplete;
+    }
+
+    /**
+     * Написать метод, которому на вход подается одномерный массив и число n
+     * (может быть положительным, или отрицательным),при этом метод должен
+     * сместить все элементы массива на n позиций. Элементы смещаются циклично.
+     * Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+     */
+
+    static void swapIndex(int[] originalArray, int n) {
+        int saveValue = 0;
+        if (n > 0) {
+            if (n > originalArray.length) {
+                n = n % originalArray.length;
+            } else if (n == originalArray.length) {
+                n = 0;
+            }
+            for (int x = 0, countFrom = originalArray.length - n; x < n; x++) {
+                int stepCounter = originalArray.length - n;
+                for (int y = 0, step = countFrom, previousValue = step - 1; y < stepCounter; y++) {
+                    saveValue = originalArray[previousValue];
+                    originalArray[previousValue] = originalArray[step];
+                    originalArray[step] = saveValue;
+                    step--;
+                    previousValue--;
+                }
+                countFrom++;
+            }
+        } else if (n < 0) {
+            n = n * (-1);
+            if (n > originalArray.length) {
+                n = n % originalArray.length;
+            } else if (n == originalArray.length) {
+                n = 0;
+            }
+            for (int x = 0, countFrom = 0 + n - 1; x < n; x++) {
+                int stepCounter = originalArray.length - n;
+                for (int y = 0, step = countFrom, nextValue = step + 1; y < stepCounter; y++) {
+                    saveValue = originalArray[nextValue];
+                    originalArray[nextValue] = originalArray[step];
+                    originalArray[step] = saveValue;
+                    step++;
+                    nextValue++;
+                }
+                countFrom--;
+            }
+        }
+        System.out.println(Arrays.toString(originalArray));
+
     }
 }
+
+
