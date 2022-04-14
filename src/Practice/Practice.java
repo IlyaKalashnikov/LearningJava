@@ -18,10 +18,12 @@ public class Practice {
 
     private static void playAgain() {
         System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
-        Scanner console = new Scanner(System.in);
-        int usersChoice = console.nextInt();
+        int usersChoice = new Scanner(System.in).nextInt();
         if (usersChoice == 1) {
             checkNumber();
+        }
+        else if (usersChoice > 1 || usersChoice < 0) {
+            playAgain();
         }
         else {
             return;
@@ -29,21 +31,17 @@ public class Practice {
     }
 
     private static void checkNumber() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(10);
+        int randomNumber = new Random().nextInt(10);
         System.out.println("Введите число:");
         for (int usersTries = 1; usersTries <= 3; usersTries ++) {
-            Scanner console = new Scanner(System.in);
-            int usersNumber = console.nextInt();
+            int usersNumber = new Scanner(System.in).nextInt();
 
             if (usersNumber > randomNumber) {
-                System.out.println("Ваше число больше загаданного. Попробуйте еще раз.");
-                System.out.println("Осталось попыток: " + (3 - usersTries));
+                usersGreaterThanRandom(usersTries);
             }
 
             else if (usersNumber < randomNumber) {
-                System.out.println("Ваше число меньше загаданного. Попробуйте еще раз.");
-                System.out.println("Осталось попыток: " + (3 - usersTries));
+                usersLowerThanRandom(usersTries);
             }
 
             else {
@@ -52,5 +50,15 @@ public class Practice {
             }
         }
         playAgain();
+    }
+
+    private static void usersLowerThanRandom(int usersTries) {
+        System.out.println("Ваше число меньше загаданного. Попробуйте еще раз.");
+        System.out.println("Осталось попыток: " + (3 - usersTries));
+    }
+
+    private static void usersGreaterThanRandom(int usersTries) {
+        System.out.println("Ваше число больше загаданного. Попробуйте еще раз.");
+        System.out.println("Осталось попыток: " + (3 - usersTries));
     }
 }
