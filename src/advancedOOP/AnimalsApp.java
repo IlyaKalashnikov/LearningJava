@@ -6,9 +6,7 @@ public class AnimalsApp {
         Cat barsik = new Cat("Барсик");
         Dog bobik = new Dog("Бобик");
         Animal tuzik = new Dog("Тузик");
-        Animal chucha = new Animal("Чуча");
         Cat murka = new Cat();
-        chucha.run(1000);
         tuzik.swim(8);
         druzhok.run(250);
         bobik.run(600);

@@ -35,10 +35,10 @@ public class Dog extends Animal {
 
     @Override
     public void swim(int distance) {
-        verifyAndSwim(distance);
+        verifyInfoAndSwim(distance);
     }
 
-    private void verifyAndSwim(int distance) {
+    private void verifyInfoAndSwim(int distance) {
         if (distance > 10) {
             System.out.println("Собака может проплыть только 10 м.");
         } else if (distance < 0) {
