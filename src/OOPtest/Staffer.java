@@ -1,49 +1,44 @@
 package OOPtest;
 
+import OOPtest.enums.Position;
+
 public class Staffer extends Employee {
-    private String position;
-    private String positionLevel;
-    private int experience;
-    private double salary;
-    public Staffer(String name, int age, String position, String positionLevel, int experience) {
+    private final String role;
+    private final Position position;
+    private final int experience;
+
+    public Staffer(String name,
+                   int age,
+                   String role,
+                   Position position,
+                   int experience) {
         super(name, age);
+        this.role = role;
         this.position = position;
-        this.positionLevel = positionLevel;
         this.experience = experience;
     }
 
     public double getSalary() {
-        salary = getStarterSalary() * positionLevelMultiplier() + experienceBonus();
-        return salary;
+        return starterSalary * positionLevelMultiplier() + experienceBonus();
     }
 
     private double positionLevelMultiplier() {
-        double multiplier = 1;
-        if (positionLevel.equalsIgnoreCase("Junior")) {
-            multiplier = 1.5;
-        } else if (positionLevel.equalsIgnoreCase("Middle")) {
-            multiplier = 2.0;
-        } else if (positionLevel.equalsIgnoreCase("Senior")) {
-            multiplier = 2.5;
-        } else if (positionLevel.equalsIgnoreCase("Lead")) {
-            multiplier = 3;
-        }
-        return multiplier;
+        return switch (position) {
+            case JUNIOR -> 1.5;
+            case MIDDLE -> 2.0;
+            case SENIOR -> 2.5;
+            case LEAD -> 3.0;
+        };
     }
 
-
     private double experienceBonus() {
-        double bonus = 1;
-        if (experience % 2 == 0) {
-            bonus = experience / 2 * 5 * getStarterSalary() / 100;
-        }
-        return bonus;
+        return experience % 2 == 0 ? 1 : experience / 2 * 5 * starterSalary / 100;
     }
 
     @Override
     public void showInfo() {
-        System.out.println("Сотрудник:" + getName() + " id: " + getId() + " Возраст: " + getAge() + " Должность: " + positionLevel + " " + position
-        + " Опыт: " + experience + " Зарплата: " + getSalary());
+        System.out.println("Сотрудник:" + getName() + " id: " + getId() + " Возраст: " + getAge() + " Должность: " +
+                position.getDescription() + " " + position + " Опыт: " + experience + " Зарплата: " + getSalary());
     }
 }
 
