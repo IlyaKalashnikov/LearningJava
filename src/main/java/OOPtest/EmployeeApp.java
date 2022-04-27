@@ -11,8 +11,8 @@ public class EmployeeApp {
         employees[1] = new Freelancer("Иванов И.И.", 21, "Санкт-Петербург", 3);
 
         for (Employee employee : employees) {
+            System.out.println();
             System.out.println(employee);
-
             employee.showInfo();
         }
     }

@@ -1,4 +1,4 @@
-package testingEnums;
+package oopBasics.testingEnums;
 
 public enum Arithmetic {
     PLUS, MINUS, DIVISION, MULTIPLICATION;
@@ -9,9 +9,7 @@ public enum Arithmetic {
 
     public static int minus(int x, int y) {return x - y;}
 
-    public static int division(int x, int y) {
-        return x / y;
-    }
+    public static int division(int x, int y) {return x / y;}
 
     public static int multiplication(int x, int y) {
         return x * y;
@@ -23,8 +21,10 @@ public enum Arithmetic {
             case "-" -> x = "MINUS";
             case "*" -> x = "MULTIPLICATION";
             case "/" -> x = "DIVISION";
-        }
+            default -> throw new IrrelevantDataException();
+            }
         return Arithmetic.valueOf(x);
+        }
+
     }
-}
 

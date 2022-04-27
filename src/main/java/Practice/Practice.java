@@ -16,40 +16,37 @@ public class Practice {
         checkNumber();
     }
 
-    private static void playAgain() {
-        System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
-        int usersChoice = new Scanner(System.in).nextInt();
-        if (usersChoice == 1) {
-            checkNumber();
-        }
-        else if (usersChoice > 1 || usersChoice < 0) {
-            playAgain();
-        }
-        else {
-            return;
-        }
-    }
+        //if (usersChoice == 1) {
+          //  checkNumber();
+        //}
+        //else if (usersChoice > 1 || usersChoice < 0) {
+          //  playAgain();
+        //}
+        //else {
+          //  return;
+
 
     private static void checkNumber() {
-        int randomNumber = new Random().nextInt(10);
-        System.out.println("Введите число:");
-        for (int usersTries = 1; usersTries <= 3; usersTries ++) {
-            int usersNumber = new Scanner(System.in).nextInt();
-
-            if (usersNumber > randomNumber) {
-                usersGreaterThanRandom(usersTries);
+        Scanner console = new Scanner(System.in);
+        do {
+            int randomNumber = new Random().nextInt(10);
+            System.out.println("Введите число:");
+            for (int usersTries = 1; usersTries <= 3; usersTries++) {
+                int usersNumber = console.nextInt();
+                if (usersNumber > randomNumber) {
+                    usersGreaterThanRandom(usersTries);
+                } else if (usersNumber < randomNumber) {
+                    usersLowerThanRandom(usersTries);
+                } else {
+                    System.out.println("Вы угадали!");
+                    break;
+                }
             }
-
-            else if (usersNumber < randomNumber) {
-                usersLowerThanRandom(usersTries);
-            }
-
-            else {
-                System.out.println("Вы угадали!");
+            System.out.println("sdsdsd");
+            if (console.nextInt() != 1) {
                 break;
             }
-        }
-        playAgain();
+        } while (true);
     }
 
     private static void usersLowerThanRandom(int usersTries) {

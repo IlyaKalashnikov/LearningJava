@@ -8,12 +8,18 @@ public class Employee {
      * Создать массив из 5 сотрудников.
      * С помощью цикла вывести информацию только о сотрудниках старше 40 лет.
      */
+    private static int EMPLOYEE_COUNT;
     private String name;
     private String position;
     private String email;
     private String phoneNumber;
     private double salary;
     private int age;
+
+    public Employee() {
+        this("123", "1234", "1", "11", 1.0, 1);
+        EMPLOYEE_COUNT++;
+    }
 
     public Employee(String name, String position, String email, String phoneNumber, double salary, int age) {
         this.name = name;
@@ -22,6 +28,7 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.salary = salary;
         this.age = age;
+        EMPLOYEE_COUNT++;
     }
 
     public void showInfo() {

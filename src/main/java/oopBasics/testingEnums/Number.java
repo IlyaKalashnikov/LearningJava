@@ -1,4 +1,4 @@
-package testingEnums;
+package oopBasics.testingEnums;
 
 public class Number {
     private int number;

@@ -40,5 +40,10 @@ public class Staffer extends Employee {
         System.out.println("Сотрудник:" + getName() + " id: " + getId() + " Возраст: " + getAge() + " Должность: " +
                 position.getDescription() + " " + position + " Опыт: " + experience + " Зарплата: " + getSalary());
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
 
