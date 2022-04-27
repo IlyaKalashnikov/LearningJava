@@ -113,6 +113,10 @@ public class ProjectModuleOne {
 
     static String gitCheck(String gitRegs) {
         return gitRegs;
-}
+    }
+
+    static String gitNewBranch(String newBranch) {
+        return newBranch;
+    }
 }
 
